@@ -20,7 +20,6 @@ for country in country_data_raw:
     single_country['population'] = country['population']
     single_country['deaths'] = country['latest_data']['deaths']
     single_country['total_cases'] = country['latest_data']['confirmed']
-    single_country['death_rate'] = (country['latest_data']['calculated']['death_rate'])
 
     if str(country['latest_data']['calculated']['death_rate'])[0].isdigit():
         single_country['death_rate_%'] = round((country['latest_data']['calculated']['death_rate']), 2)
