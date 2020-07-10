@@ -22,14 +22,19 @@ for country in country_data_raw:
     single_country['total_cases'] = country['latest_data']['confirmed']
 
     if str(country['latest_data']['calculated']['death_rate'])[0].isdigit():
-        single_country['death_rate_%'] = round((country['latest_data']['calculated']['death_rate']), 2)
+        single_country['infected_death_rate_%'] = round((country['latest_data']['calculated']['death_rate']), 2)
     else:
-        single_country['death_rate_%'] = 'N/A'
+        single_country['infected_death_rate_%'] = 'N/A'
 
     if str(country['latest_data']['confirmed'])[0].isdigit() and str(country['population'])[0].isdigit():
         single_country['population_infected_rate_%'] = round((country['latest_data']['confirmed'] / country['population'] * 100), 3)
     else:
         single_country['population_infected_rate_%'] = 'N/A'
+
+    if str(country['latest_data']['deaths'])[0].isdigit() and str(country['population'])[0].isdigit():
+        single_country['population_death_rate_%'] = round((country['latest_data']['deaths'] / country['population'] * 100), 4)
+    else:
+        single_country['population_death_rate_%'] = 'N/A'
 
     single_country['date_updated'] = country['updated_at']
     country_data.append(single_country)
